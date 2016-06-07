@@ -1,0 +1,76 @@
+A simple text based sudoku puzzle solver application.
+Copyright 2016, Aaron Calder.
+
+** To build first try running the relevant build script (it may work):
+build_gcc.sh
+build_ming.sh
+configure_vs.bat
+build_vs.bat
+
+
+** Building with Visual Studio:
+
+Install cmake by browsing to www.cmake.org and downloading and
+running the Win32 Installer.
+
+To configure to build in Visual Studio first run 'configure_vs.bat'
+from Visual Studio's Developer Command Prompt (requires nmake.exe
+in the executable path).  This will build the required
+library pdcurses then create the Visual Studio project file
+'sudoku.vcxproj'. Build and run by opening with Visual Studio.
+
+I'm not sure what the 'BUILD_ALL' and 'ZERO_CHECK' projects generated
+by cmake are for.  Sometimes they cause conflict when trying to
+run the debugger.  I still need to do more research.  They can be
+removed.
+
+Alternatively build from the Developer Command Prompt (requires
+MSBuild.exe) with:
+  build_vs.bat
+    or
+  MSBuild.exe sudoku.vcxproj
+
+To execute from command line go to the sudoku base directory then:
+  Debug\sudoku.exe
+
+# TODO: Add code to install the program and build executable which
+# isn't the Debug version.
+
+
+** Building in Linux:
+
+Requires cmake and the wide character ncurses development library.
+To install in Ubuntu:
+  apt-get install cmake libncursesw5-dev
+  (or aptitude command)
+
+Other linux distributions should have as well.
+# TODO: Research what package to install in other distros.)
+
+From the shell prompt go to the 'sudoku' directory and
+create the makefiles for make:
+  cmake .
+
+Build:
+  make
+
+# TODO: Add 'make install' capability.
+
+The sudoku executable is generated in the "build" directory.
+"file.sdk" (copied to "build") needs to be in current directory when executing.
+# TODO: Improve data file referencing in source code. Maybe use
+# a config file.
+
+Execute:
+  cd build
+  ./sudoku
+
+
+** Building in Cygwin:
+
+Requires cmake and the wide character ncurses development library.
+Install by running the Cygwin install application 'setup.exe'.
+In 'Select Packages' search for for 'ncursesw' then 'cmake'
+install the packages 'libncursesw-devel' and 'cmake'.
+
+For everything else follow the Linux build instructions.
