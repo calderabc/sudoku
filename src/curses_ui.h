@@ -17,8 +17,8 @@
 
 #ifdef __GNUC__
 #define _XOPEN_SOURCE_EXTENDED
-#include <ncursesw/curses.h>
-/* #include <curses.h> */
+/* #include <ncursesw/curses.h> */
+#include <curses.h>
 #endif
 
 #include "ui.h"
