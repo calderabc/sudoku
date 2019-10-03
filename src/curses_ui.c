@@ -62,7 +62,7 @@ curses_init_screen (unsigned int group_size)
      for keyboard input.  */
   nodelay(board, TRUE);
 
-  /* keypad(board, TRUE);  */
+  keypad(board, TRUE);
 
 }
 
@@ -94,25 +94,35 @@ curses_get_keypress()
 
   switch (keypress)
     {
+    case KEY_UP:
+    /* What is 201 for? */
     case 201:
     case 'k':
     case 'K':
       input = UP;
       break;
+    case KEY_DOWN:
     case 'j':
     case 'J':
       input = DOWN;
       break;
+    case KEY_LEFT:
+    /* 191 ? */
     case 191:
     case 'h':
     case 'H':
       input = LEFT;
       break;
+    case KEY_RIGHT:
+    /* 171 ? */
     case 171:
     case 'l':
     case 'L':
       input = RIGHT;
       break;
+    /* 10 and/or 13 for Enter */
+    case 10: /* LF Line Feed */
+    case 13: /* CR Carriage Return */
     case 'q':
     case 'Q':
       input = QUIT;
